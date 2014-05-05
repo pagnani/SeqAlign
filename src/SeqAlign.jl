@@ -25,9 +25,9 @@ const GapScore = -4
 
 function needlemanwunsch(seq1::String, seq2::String)
 
-    @time IterMat = CreateMatrixNW(seq1,seq2)
-    @time align =  BackTrackNW( IterMat, seq1, seq2)    
-    @time stringal = SimplePrintAlign(align)
+    IterMat = CreateMatrixNW(seq1,seq2)
+    align =  BackTrackNW( IterMat, seq1, seq2)    
+    stringal = SimplePrintAlign(align)
     
     return stringal 
     
@@ -63,8 +63,7 @@ function BackTrackNW( IterMat::Array{eltype(ScoreDNA),2}, seq1::String, seq2::St
             push!(lalign,('-',seq2[j-1],'-'))
             j -= 1
         else
-            println("IterNW CHE CAZZO CI FACCIO QUI?")
-            error("CIAO IO NON CONTINUO")
+            error("What am I doing here")
         end     
     end 
 
@@ -128,12 +127,9 @@ end
 
 function smithwaterman(seq1::String, seq2::String)
     
-    
-    @time IterPtr, IterMat = CreateMatrixSW(seq1,seq2)
-
-    @time align =  BackTrackSW( IterMat, IterPtr, seq1, seq2)    
-
-    @time stringal = SimplePrintAlign(align)
+    IterPtr, IterMat = CreateMatrixSW(seq1,seq2)
+    align =  BackTrackSW( IterMat, IterPtr, seq1, seq2)    
+    stringal = SimplePrintAlign(align)
 
     return stringal
 end
@@ -167,8 +163,7 @@ function BackTrackSW( IterMat::Array{eltype(ScoreDNA),2}, IterPtr::Array{Int,2},
                 elseif pair[1] == starti && pair[2] < startj
                     push!(lalign, ('-',seq2[startj-1],'-'))
                 else
-                    println("BOH CHE CI FACCIO QUI???")
-                    error("ESCO")
+                    error("What am I doing here?")
                 end
                 starti = pair[1]
                 startj = pair[2]
@@ -228,8 +223,6 @@ function CreateMatrixSW(seq1::String,seq2::String)
     return  IterPtr, IterMat
 end
 
-
-#function SimplePrintAlign(align::Array{Any,1})
 function SimplePrintAlign(align::Array{Array{(Char,Char,Char),1},1})
 
     numal = length(align)
