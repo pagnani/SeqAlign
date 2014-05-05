@@ -1,6 +1,6 @@
-# module SeqAlign
+module SeqAlign
 
-# export smithwaterman, smithwaterman1, needlemanwunsch
+export smithwaterman, needlemanwunsch
 
 #                  A    C   C   T
 # const ScoreDNA = [[0.6 0.1 0.2 0.1]; # A 
@@ -232,4 +232,4 @@ let alphabetDNA = [1, 2, 3, 4, 5]
         end
     end
 end   
-# end
+end
